@@ -27,7 +27,9 @@ mongoose
   .then(() => console.log("MongoDB Connected..."));
 
 app.use('/', indexRouter);
-
+app.get('/',function(req,res){
+  res.write('Home');
+});
 // port setting
 app.set("port", env.port);
 app.listen(app.get("port"), () => {

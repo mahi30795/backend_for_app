@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt-nodejs');
+const env = require('../config/env');
 async function login(req,res){
     User.findOne({'local.email':req.body.email},function(err,data){
         if(err) console.log(err);

@@ -28,8 +28,30 @@ async function login(req,res){
     });
 }
 
+
+
+async function register(req,res){
+    const hash = genHash(req.body.password);
+    const user = new User({
+        'local.email':req.body.email,
+        'local.password':hash
+    });
+    user.save(function(err,data){
+        if(err) console.log(err);
+        console.log('Saved');
+        res.json({
+            status:true,
+            msg:'Saved'
+        });
+    });
+
+}
+
 function validPassword(password,hash){
     return bcrypt.compareSync(password, hash);
 }
 
-module.exports = {login};
+function genHash(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  }
+module.exports = {login,register};

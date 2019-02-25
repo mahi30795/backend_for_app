@@ -7,5 +7,5 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login',userController.login);
-
+router.post('/register',userController.register);
 module.exports = router;

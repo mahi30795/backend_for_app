@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt-nodejs');
-const mod = require('../middleware/module');
+
 
 function login(req,res){
     console.log(req.body);
